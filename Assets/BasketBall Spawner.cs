@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic; 
 
 public class BasketBallSpawner : MonoBehaviour
 {
@@ -7,15 +9,31 @@ public class BasketBallSpawner : MonoBehaviour
 
     public Transform BbSpawner;
 
+    private List<GameObject> basketBalls;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(BasketBallPrefab, BbSpawner.position, BbSpawner.rotation);
+        GameObject bBall = Instantiate(BasketBallPrefab, BbSpawner.position, BbSpawner.rotation);
+        basketBalls.Add(bBall);
+
     }
 
     public void SpawnBasketball()
     {
-        Instantiate(BasketBallPrefab, BbSpawner.position, BbSpawner.rotation);
+        DestroyBBs();
+        GameObject bBall = Instantiate(BasketBallPrefab, BbSpawner.position, BbSpawner.rotation);
+        basketBalls.Add(bBall);
     }
+
+    void DestroyBBs()
+    {
+        foreach (var bBall in basketBalls)
+        {
+            Destroy(bBall);
+        }
+        basketBalls.Clear();
+    } 
+
 }
