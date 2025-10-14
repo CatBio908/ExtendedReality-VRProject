@@ -9,7 +9,7 @@ public class BasketBallSpawner : MonoBehaviour
 
     public Transform BbSpawner;
 
-    private List<GameObject> basketBalls;
+    public List<GameObject> basketBalls;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +27,7 @@ public class BasketBallSpawner : MonoBehaviour
         basketBalls.Add(bBall);
     }
 
-    void DestroyBBs()
+    public void DestroyBBs()
     {
         foreach (var bBall in basketBalls)
         {

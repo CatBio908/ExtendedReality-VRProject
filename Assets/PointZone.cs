@@ -6,6 +6,7 @@ public class PointZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         FindFirstObjectByType<ScoreManager>().AddScore(11);
+        FindFirstObjectByType<BasketBallSpawner>().DestroyBBs();
         Destroy(other.gameObject);
     }
 }
