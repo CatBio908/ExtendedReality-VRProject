@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class BasketBallSpawner : MonoBehaviour
 {
     public static BasketBallSpawner instance; 
-    public GameObject BasketBallPrefab;
+    //public GameObject BasketBallPrefab;
 
     public Transform BbSpawner;
+
+    public List<GameObject> BBPrefabs;
 
     public List<Transform> SpwnSpts;
 
@@ -23,18 +25,20 @@ public class BasketBallSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnBasketball(); 
+        RandomBalls();
+        //SpawnBasketball(); 
 
     }
 
     public void SpawnBasketball()
     {
-        DestroyBBs();
+        RandomBalls();
+        /*DestroyBBs();
         foreach (var Spwns in SpwnSpts)
         {
-            GameObject bBall = Instantiate(BasketBallPrefab, Spwns.position, BbSpawner.rotation);
+            GameObject bBall = Instantiate(ChosenBall, Spwns.position, BbSpawner.rotation);
             basketBalls.Add(bBall);
-        }
+        } */
     }
 
     public void DestroyBBs()
@@ -60,6 +64,22 @@ public class BasketBallSpawner : MonoBehaviour
     public void AllBallsGone()
     {
 
+    }
+
+    public void RandomBalls()
+    {
+
+        DestroyBBs();
+        foreach (var Spwns in SpwnSpts)
+        {
+            int RandomIndex = Random.Range(0, BBPrefabs.Count);
+
+            GameObject ChosenBall = BBPrefabs[RandomIndex];
+
+            GameObject bBall = Instantiate(ChosenBall, Spwns.position, BbSpawner.rotation);
+            basketBalls.Add(bBall);
+        }
+        
     }
 
 }
