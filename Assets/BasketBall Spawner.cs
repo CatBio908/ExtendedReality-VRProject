@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class BasketBallSpawner : MonoBehaviour
 {
     public static BasketBallSpawner instance; 
-    //public GameObject BasketBallPrefab;
 
     public Transform BbSpawner;
 
@@ -26,19 +25,13 @@ public class BasketBallSpawner : MonoBehaviour
     void Start()
     {
         RandomBalls();
-        //SpawnBasketball(); 
 
     }
 
     public void SpawnBasketball()
     {
         RandomBalls();
-        /*DestroyBBs();
-        foreach (var Spwns in SpwnSpts)
-        {
-            GameObject bBall = Instantiate(ChosenBall, Spwns.position, BbSpawner.rotation);
-            basketBalls.Add(bBall);
-        } */
+       
     }
 
     public void DestroyBBs()
